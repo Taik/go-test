@@ -33,13 +33,14 @@ func (w *Worker) Stop() {
 	}()
 }
 
+// NewWorker returns an instance of Worker initialized with
 func NewWorker(id int, workQueue chan WorkRequest) *Worker {
-	worker := &Worker{
+	worker := Worker{
 		ID:       id,
 		WorkChan: workQueue,
 		QuitChan: make(chan bool),
 	}
-	return worker
+	return &worker
 }
 
 // Worker slice to hold all current workers
